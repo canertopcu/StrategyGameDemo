@@ -1,11 +1,10 @@
 ﻿public interface IGridGenerator:IGridClear 
 {
-    void GenerateGrid();
+    GridBox[,] GenerateGrid();
     int GetRowCount();
     int GetColumnCount();
 
-    void SetRowColumnCount(int row, int column);
-    GridBox[,] GetBoxes();
+    void SetRowColumnCount(int row, int column); 
 
 
 

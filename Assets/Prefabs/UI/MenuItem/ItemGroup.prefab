@@ -223,6 +223,14 @@ PrefabInstance:
       value: Baracks
       objectReference: {fileID: 0}
     - target: {fileID: 3082047476191692761, guid: 060b90e466d85f6498db51673dc2e46b, type: 3}
+      propertyPath: sizeX
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082047476191692761, guid: 060b90e466d85f6498db51673dc2e46b, type: 3}
+      propertyPath: sizeY
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082047476191692761, guid: 060b90e466d85f6498db51673dc2e46b, type: 3}
       propertyPath: movingPanel
       value: 
       objectReference: {fileID: 0}

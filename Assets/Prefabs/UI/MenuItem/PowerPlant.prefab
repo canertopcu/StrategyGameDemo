@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9b105fec8987142946c77cbf3e8cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingPanel: {fileID: 0}
-  rememberPanel: {fileID: 0}
-  old: {x: 0, y: 0, z: 0}
+  selectedBox: {fileID: 0}
+  sizeX: 3
+  sizeY: 2
+  color: {r: 1, g: 0.65512747, b: 0, a: 1}
+  WorldVisual: {fileID: 2531802929489980461, guid: dd0d205f9577de34297e4f2bf98b2084, type: 3}

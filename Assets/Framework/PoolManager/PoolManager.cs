@@ -9,13 +9,9 @@ public enum PoolType
     None=0, 
 }
 public class PoolManager : MonoBehaviour
-{ 
-    private IGameManager gameManager;
-    [Inject]
-    public void Setup(IGameManager gameManager)
-    {
-        this.gameManager = gameManager;
-    }
+{
+    [Inject]  private GameManager gameManager;
+ 
 
     [System.Serializable]
     public class ObjectPool

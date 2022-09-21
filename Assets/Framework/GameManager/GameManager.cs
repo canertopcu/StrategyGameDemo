@@ -6,9 +6,10 @@ public interface IGameManager
 {
     GameState State { get; set; }
     PoolManager poolManager { get; set; }
+    GridManager gridManager { get; set; }
 }
 
-public class GameManager : IGameManager
+public class GameManager : MonoBehaviour, IGameManager
 {
     public GameState _state = GameState.Pause;
     public GameState State
@@ -27,9 +28,8 @@ public class GameManager : IGameManager
     }
 
     private PoolManager _poolManager;
-    public PoolManager poolManager
-    {
-        get => _poolManager; set => _poolManager = value;
-    }
+    public PoolManager poolManager { get => _poolManager; set => _poolManager = value; }
 
+    private GridManager _gridManager;
+    public GridManager gridManager { get => _gridManager; set => _gridManager = value; }
 }

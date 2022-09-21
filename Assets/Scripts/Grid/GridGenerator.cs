@@ -8,7 +8,6 @@ public class GridGenerator : MonoBehaviour, IGridGenerator
     [SerializeField] private GameObject boxPrefab;
     [SerializeField] public int rowCount = 5;
     [SerializeField] public int columnCount = 5;
-
     public float boxSize = 1;
     public float paddingSpace = 0.1f;
 
@@ -22,7 +21,7 @@ public class GridGenerator : MonoBehaviour, IGridGenerator
     }
 
     [ContextMenu("Generate Grid")]
-    public void GenerateGrid()
+    public GridBox[,] GenerateGrid()
     {
         ClearAllBoxes();
         boxes = new GridBox[columnCount, rowCount];
@@ -55,6 +54,7 @@ public class GridGenerator : MonoBehaviour, IGridGenerator
                 box.transform.localScale = Vector3.one * boxSize;
             }
         }
+        return boxes;
 
     }
 
@@ -68,10 +68,7 @@ public class GridGenerator : MonoBehaviour, IGridGenerator
         return columnCount;
     }
 
-    public GridBox[,] GetBoxes()
-    {
-        return boxes;
-    }
+
 
 
     public void ResetAllGridBoxes()

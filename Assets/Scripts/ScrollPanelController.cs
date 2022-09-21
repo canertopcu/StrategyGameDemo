@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Zenject;
 
 public class ScrollPanelController : MonoBehaviour, IBeginDragHandler, IDragHandler, IScrollHandler
 {
+    [Inject] public GameManager gameManager;
     public Transform movingPanel;
     public RectTransform viewPort;
     public RectTransform contentPanel;
@@ -28,12 +30,12 @@ public class ScrollPanelController : MonoBehaviour, IBeginDragHandler, IDragHand
     bool positiveDrag = false;
     void Start()
     {
-        GenerateItemGroupList();
+        GenerateItemGroupList(gameManager);
         scrollRect = GetComponent<ScrollRect>();
         scrollRect.onValueChanged.AddListener(OnValueChanged);
     }
 
-    void GenerateItemGroupList()
+    void GenerateItemGroupList(GameManager gameManager)
     {
         size = itemHeight + paddingSpace;
         numberOfItem = Mathf.CeilToInt(viewPort.rect.height / size) + 1;
@@ -42,7 +44,7 @@ public class ScrollPanelController : MonoBehaviour, IBeginDragHandler, IDragHand
         {
             var itemGroup = Instantiate(itemGroupPrefab.gameObject, contentPanel.transform).GetComponent<ItemGroup>();
             itemGroup.gameObject.name = "ItemGroup_" + i;
-            itemGroup.InitGroup(movingPanel);
+            itemGroup.InitGroup(movingPanel,gameManager);
             itemGroup.rect.anchoredPosition = new Vector3(0, -i * size, 0);
 
 
@@ -97,8 +99,6 @@ public class ScrollPanelController : MonoBehaviour, IBeginDragHandler, IDragHand
         }
 
     }
-
-
 
     public void OnBeginDrag(PointerEventData eventData)
     {
