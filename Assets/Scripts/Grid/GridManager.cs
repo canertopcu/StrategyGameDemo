@@ -47,21 +47,25 @@ public class GridManager : MonoBehaviour
 
     }
 
-    public void FinalizeBoxes(GridBox box, MenuItem unit)
+    public void FinalizeBoxes(GridBox box, MenuItem building)
     {
         Vector3 totalPos = Vector3.zero;
-        for (int i = box.x; i < box.x + unit.sizeX; i++)
+        int count = (building.sizeX * building.sizeY);
+        GridBox[] selectedBoxes = new GridBox[count];
+        for (int i = box.x; i < box.x + building.sizeX; i++)
         {
-            for (int j = box.y; j < box.y + unit.sizeY; j++)
+            for (int j = box.y; j < box.y + building.sizeY; j++)
             {
-                boxes[i, j].Fill(unit);
+                boxes[i, j].Fill(building);
+                //selectedBoxes[i * building.sizeY + j] = boxes[i, j];
                 totalPos += boxes[i, j].transform.position;
             }
         }
 
-        totalPos = totalPos / ((float)unit.sizeX * (float)unit.sizeY);
+        totalPos = totalPos / (float)count;
         //totalPos.y = 1f;
-        Instantiate(unit.WorldVisual,totalPos,Quaternion.identity,transform);
+        GameObject createdBuilding = Instantiate(building.WorldVisual, totalPos, Quaternion.identity, transform);
+
     }
 
     public void UncheckBoxes(GridBox box, MenuItem unit)

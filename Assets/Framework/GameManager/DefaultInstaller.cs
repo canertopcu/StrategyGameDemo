@@ -7,5 +7,6 @@ public class DefaultInstaller : MonoInstaller
     {
         // Container.Bind<IGameManager>().To<GameManagerWithInterface>().AsSingle();
         Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<UIManager>().FromComponentInHierarchy().AsSingle();
     }
 }
